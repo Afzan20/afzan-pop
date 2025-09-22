@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 
 
@@ -13,7 +14,7 @@ Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR!';
 })->name('mahasiswa.show');
 
-Route ::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
+// Route ::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
 
 Route::get('/mahasiswa', function () {
     return 'Halo Mahasiswa';
@@ -35,3 +36,4 @@ Route::get('/matakuliah', function (){
     return 'Menampilkan Data Matakuliah';
 });
 
+Route::get('/home', [HomeController::class, 'index']);
