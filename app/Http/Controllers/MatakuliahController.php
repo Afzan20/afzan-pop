@@ -35,7 +35,7 @@ class MatakuliahController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('matakuliah');
     }
 
     /**
