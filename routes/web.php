@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
+
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/pcr', function () {
+    return 'Selamat Datang di Website Kampus PCR!';
+})->name('mahasiswa.show');
+
+Route ::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
+
+Route::get('/mahasiswa', function () {
+    return 'Halo Mahasiswa';
+});
+
+Route::get('/nama/{afzan}', function ($param1) {
+    return 'Nama saya: Afzan '.$param1;
+});
+
+Route::get('/nim/{param1?}', function ($param1 = '') {
+    return 'NIM saya: 2457301004'.$param1;
+});
+
+Route::get('/about', function () {
+    return view('halaman-about');
+});
+
+Route::get('/matakuliah', function (){
+    return 'Menampilkan Data Matakuliah';
+});
+
