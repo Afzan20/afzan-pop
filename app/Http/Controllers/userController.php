@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class userController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       //
+        $data['dataUser'] = User::all();
+        return view('admin.user.index', $data);
     }
 
     /**
@@ -20,7 +22,7 @@ class userController extends Controller
      */
     public function create()
     {
-        $data['password'] = Hash::make($request->password);
+        return view('admin.user.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data['name']     = $request->name;
+        $data['email']    = $request->email;
+        $data['password'] = Hash::make($request->password);
+        $data['password_konfirmation'] = $request->password_konfirmation;
+
+        User::create($data);
+
+        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
     }
 
     /**
